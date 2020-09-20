@@ -1,0 +1,22 @@
+.container {
+  background-color: powderblue;
+  padding: 40px;
+  background-size: 700px 600px;
+  background-image: url("http://exchangedownloads.smarttech.com/public/content/c7/c7b7d2f6-0e68-41bc-b320-063ae2783f69/previews/medium/0001.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  text-align: center;
+}
+h1 {
+  color: blue;
+}
+p {
+  color: red;
+  font-size: large;
+}
+footer {
+  text-align: center;
+  padding: 60px;
+  font-size: 18px;
+  background-color: grey;
+}
