@@ -44,10 +44,32 @@ function showError(error){
 function  getWeather(latitude, longitude){
     let api = `http://api.openweathermap.org/data/2.5/weather?
     lat=${latitude}&lon=${longitude}&appid=${key}`
+console.log(api)
+    fetch(api)
+    .then(function(response){
+     let data = response.json();
+     return data ;  
+    })
+    .then(function(data){
+        Weather.temperature.value = Math.floor(data.main.temp - KELVIN);
+        Weather.description = data.weather[0].description;
+        Weather.iconId=data.weather[0].icon;
+        Weather.city= data.name;
+        Weather.country = data.sys.country
+
+    })
+    .then(function(){
+        displayWeather()
+    });
+
+    //DISPLAY WEATHER TO UI
+    function displayWeather(){
+     iconElement.innerHTML = `<img src="icons/${Weather.iconId}.png"/>`;
+     tempElement.innerHTML = `${Weather.temperature.value}° <span>C</span>`;
+     descElement.innerHTML = Weather.description;
+    locationElement.innerHTML = `${Weather.city}, ${Weather.country}`;
+    }
 }
-
-
-
 
 
 
