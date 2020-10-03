@@ -62,15 +62,32 @@ console.log(api)
         displayWeather()
     });
 
-    //DISPLAY WEATHER TO UI
-    function displayWeather(){
-     iconElement.innerHTML = `<img src="icons/${Weather.iconId}.png"/>`;
-     tempElement.innerHTML = `${Weather.temperature.value}° <span>C</span>`;
-     descElement.innerHTML = Weather.description;
-    locationElement.innerHTML = `${Weather.city}, ${Weather.country}`;
-    }
 }
+  //DISPLAY WEATHER TO UI
+  function displayWeather(){
+    iconElement.innerHTML = `<img src="icons/${Weather.iconId}.png"/>`;
+    tempElement.innerHTML = `${Weather.temperature.value}° <span>C</span>`;
+    descElement.innerHTML = Weather.description;
+   locationElement.innerHTML = `${Weather.city}, ${Weather.country}`;
+   }
+   //CELCIUS TO FAHRENHEIT CONVERSION
+   function celciusToFahrenheit(temperature){
+      return (temperature * 9/5) + 32 
+   }
 
+   // when the user clicks on the temperature
+   tempElement.addEventListener("click", function(){
+       if (weather.temperature.value === undefined){return}
+       if(weather.temperature.value == celcius){
+         let fahrenheit = celciusToFahrenheit(weather.temperature.value);
+         fahrenheit = Math.floor(fahrenheit);
+         tempElement.innerHTML = `${fahrenheit}° <span>F</span>`;
+         weather.temperature.unit = "fahrenheit"
+       }else{
+        tempElement.innerHTML = `${Weather.temperature.value}° <span>C</span>`;
+        weather.temperature.unit = "celcius"
+       }
+   })
 
 
 
