@@ -1,9 +1,9 @@
 //select elements
-const notificationElement = document.querySelector(".notification");
-const iconElement =  document.querySelector(".weather-icon");
-const tempElement =  document.querySelector(".temperature-value p");
-const descElement = document.querySelector(".temperature-description p");
-const locationElement =  document.querySelector(".location");
+const notificationElement = document.getElementById(".notification");
+const iconElement =  document.getElementById("weather-icon");
+const tempElement =  document.getElementById("temperature-value p");
+const descElement = document.getElementById("temperature-description p");
+const locationElement =  document.getElementById("location");
 
 
 //APP data
@@ -16,13 +16,13 @@ Weather.temperature={
 const KELVIN=273;
 
 //API key, get api key
-const key="bPnHUyGLA9msh2loEskcGkXU20bep1Z18jwjsnSxybvwmVlN8L"
+const key="eb899420b4msh54a3ba2026f0a44p1d6056jsn3918f241e814"
 
 //CHECK IF BROWSER SUPPORTS GEOLOCATION
 if ('geolocation' in navigator){
     navigator.geolocation.getCurrentPosition(setPosition, showError)
 }else{
-notificationElement.style.display="block";
+
 notificationElement.innerHTML=`<p>'browser does not support geolocation</p>`
 }
 
@@ -37,16 +37,22 @@ function setPosition(position){
 
 // SHOW ERROR WHEN THERE IS AN ISSUE
 function showError(error){
-    notificationElement.style.display="block";
     notificationElement.innerHTML=`<p>${error.message}</p>` 
 }
 //GET WEATHER FROM API PROVIDER
 function  getWeather(latitude, longitude){
-    let api = `https://community-open-weather-map.p.rapidapi.com/weather?callback=test&id=2172797&units=%2522metric%2522%20or%20%2522imperial%2522&mode=xml%252C%20html&q=London%252Cuk
-    lat=${latitude}&lon=${longitude}&appid=${key}`
+    
+    `lat=${latitude}&lon=${longitude}&appid=${key}`
 
-    fetch(api)
+    fetch("https://rapidapi.p.rapidapi.com/weather?q=Lagos%2CNigeria&callback=test&id=2172797&units=%22metric%22%20or%20%22imperial%22&mode=xml%2C%20html", {
+        "method": "GET",
+        "headers": {
+            "x-rapidapi-host": "community-open-weather-map.p.rapidapi.com",
+            "x-rapidapi-key": "bPnHUyGLA9msh2loEskcGkXU20bep1Z18jwjsnSxybvwmVlN8L"
+        }
+    })
     .then(function(response){
+        console.log(response)
      let data = response.json();
      return data ;  
     })
@@ -94,7 +100,7 @@ function  getWeather(latitude, longitude){
 
 
 
-
+  
 
 
 
