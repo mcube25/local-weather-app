@@ -67,6 +67,7 @@ body{
 .weather-icon{
   width: 300px;
   height: 128px;
+  padding-top: 25px;
 }
 
 .temperature-value{
