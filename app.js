@@ -17,7 +17,7 @@ weather.temperature = {
 // APP CONSTS AND VARS
 const KELVIN = 273;
 // API KEY
-const key="98ba8c90620aa1305ffa795fe53cf27d"
+const key="f54fb503de20f171809eb0302d0d56e5"
 
 // CHECK IF BROWSER SUPPORTS GEOLOCATION
 if('geolocation' in navigator){
